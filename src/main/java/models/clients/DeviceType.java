@@ -3,8 +3,8 @@ package models.clients;
 public enum DeviceType {
     CHROME("chrome"),
     FIREFOX("firefox"),
-    ANDROIDAPP("android"),
-    IOSAPP("ios");
+    ANDROID("android"),
+    IOS("ios");
 
     private String name;
 

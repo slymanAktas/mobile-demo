@@ -18,7 +18,7 @@ public class Devices {
             case FIREFOX:
                 device = new Firefox();
                 break;
-            case IOSAPP:
+            case IOS:
                 device = new ApplePhone();
                 break;
             default: //Default is Android

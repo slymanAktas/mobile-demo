@@ -9,6 +9,7 @@ import utils.TestException;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import static config.Config.LOCAL_APPIUM_HUB;
 import static config.Config.REMOTE_APPIUM_HUB;
@@ -27,6 +28,7 @@ public class AndroidPhone extends Phone {
     public void initInLocal() {
         try {
             webDriver = new AndroidDriver<>(new URL(LOCAL_APPIUM_HUB), getCapabilities());
+            webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         } catch (MalformedURLException e) {
             throw new TestException("Cannot create AndroidDriver", e);
         }

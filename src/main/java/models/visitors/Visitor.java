@@ -2,11 +2,18 @@ package models.visitors;
 
 import base.TestContext;
 import models.clients.Device;
+import models.clients.DeviceType;
+import models.clients.browsers.Browser;
+import models.clients.phones.Phone;
+import models.pages.Page;
+import models.pages.mobile.android.AndroidHomePage;
 
 import static models.clients.Device.openThe;
 
 public class Visitor {
     private Device device;
+    private Phone phone;
+    private Browser browser;
     private String email;
     private String password;
     private String userName;
@@ -58,8 +65,22 @@ public class Visitor {
         this.testContext = testContext;
     }
 
-    public Visitor openApp(String deviceName) {
-        this.device = openThe(deviceName);
+    private void setDeviceAsItSupposeToBe() {
+        if (device instanceof Phone) {
+            this.phone = (Phone) this.device;
+        } else {
+            this.browser = (Browser) this.device;
+        }
+    }
+
+    public Visitor openApp(DeviceType deviceType) {
+        this.device = openThe(deviceType.name());
+        setDeviceAsItSupposeToBe();
+        this.device.setPage(new AndroidHomePage());
         return this;
+    }
+
+    public Page nowLookingAt() {
+        return this.device.page();
     }
 }
