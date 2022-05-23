@@ -12,6 +12,7 @@ public class Config {
     public static final boolean ISREMOTE;
     public static final String LOCAL_APPIUM_HUB;
     public static final String REMOTE_APPIUM_HUB;
+    public static final String SELENIUM_GRID_HUB_URL;
     protected static final Properties properties;
 
     static {
@@ -19,9 +20,11 @@ public class Config {
         SCREENSHOT_PATH = USER_DIR + "/screenshots/";
         ISREMOTE = isRemote();
 
+
         properties = loadProperties();
         LOCAL_APPIUM_HUB = properties.getProperty("local.appium.hub");
         REMOTE_APPIUM_HUB = properties.getProperty("remote.appium.hub");
+        SELENIUM_GRID_HUB_URL = properties.getProperty("remote.grid.hub");
     }
 
     private static Properties loadProperties() {

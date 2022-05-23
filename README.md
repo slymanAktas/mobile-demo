@@ -1,0 +1,1 @@
+git authentication ardından 'git push -u origin master' yapılacak 

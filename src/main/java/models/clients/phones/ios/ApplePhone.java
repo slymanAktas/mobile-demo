@@ -7,14 +7,10 @@ import java.io.File;
 
 public class ApplePhone extends Phone {
     @Override
-    public void initInGrid() {
-
-    }
+    public void initInGrid() {}
 
     @Override
-    public void initInLocal() {
-
-    }
+    public void initInLocal() {}
 
     @Override
     public DesiredCapabilities getCapabilities() {
