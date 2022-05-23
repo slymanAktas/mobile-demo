@@ -5,12 +5,12 @@ Studio üzerinde çalışan sanal android cihaza yetki sorunu sebebi ile deploy 
 4 testi Selendroid uygulamasının muadli olan ve apk'sı `src/main/resources/apk/ApiDemos-debug.apk` dizininde yer alan ApiDemos isimli farklı 
 bir uygulama için yazdım._
 
-Case'lere `src/test/java/mobile/ApiDemoTest` class'ından erişebilirsiniz.
-
 **Case'leri yazarken yazdığım case'in içeriğinden ziyade uygulamanın mimarisine vakit ayırdım. Projeyi detaylı 
 incelediğiniz taktirde çok kolaylıkla farklı platformlara (web, api vs) genişletilebilir olduğunu görebilirsiniz.**
 
 _Test'leri koşmadan önce andoid studio içerisinden ayağa kaldırdığınız andoid cihazı `Emulator` diye isimlendirmenizi rica ederim._
+
+Case'lere `src/test/java/mobile/ApiDemoTest` class'ından erişebilirsiniz.
 
 Yazdığım 4 adet case'in stepleri aşağıdaki gibidir;
 
@@ -39,3 +39,13 @@ Case4 - Basılı tutma testi:
    `Views -> Expandable List -> 1. Custom Adapter`
  - Açılan sayfada `People Names` elementinin üzerine basılı tutulur.
  - Açılan popup'da `Sample menu` textinin geldiği görülür.
+
+
+
+
+**Projede yer alan tüm testleri komut satırı üzerinden maven surefire plugin'i ile koşmak için POM.xml'in olduğu dizinde
+`mvn clean verify` komutu verilir.
+
+Özel bir test suit oluşturmak için ise Pom.xml de profil hazırlanır ve içerisine istenilen case'ler eklenilip, 
+istenilmeyenler çıkartıldıkdan sonra aşağıdaki maven komutu ile ilgili suit içerisinde yer alan testler execute edilir.
+`mvn clean verify -PprofilName`**
