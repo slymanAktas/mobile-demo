@@ -17,6 +17,10 @@ public abstract class Device extends SeleniumDriver {
 
     private Page page;
 
+    public abstract void initInGrid();
+
+    public abstract void initInLocal();
+
     public void close() {
         this.webDriver.quit();
     }
@@ -32,10 +36,6 @@ public abstract class Device extends SeleniumDriver {
         }
         return byteArray;
     }
-
-    public abstract void initInGrid();
-
-    public abstract void initInLocal();
 
     public static Device openThe(String deviceName) {
         Device device = getDevice(deviceName);

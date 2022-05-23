@@ -18,10 +18,6 @@ import static io.appium.java_client.touch.offset.ElementOption.element;
 
 public abstract class Phone extends Device {
 
-    public AppiumDriver getDriver() {
-        return this.webDriver instanceof AndroidDriver ? (AndroidDriver) this.webDriver : (IOSDriver) this.webDriver;
-    }
-
     public abstract File getAppDir();
 
     public abstract DesiredCapabilities getCapabilities();
@@ -30,24 +26,32 @@ public abstract class Phone extends Device {
 
     public abstract void hideKeyboard();
 
-    public void tab(By by) {
-        new TouchAction(getDriver()).tap(
-                tapOptions().withElement(element(findElement(by)))
-        ).perform();
+    public AppiumDriver getDriver() {
+        return this.webDriver instanceof AndroidDriver ? (AndroidDriver) this.webDriver : (IOSDriver) this.webDriver;
     }
 
     public void clickToBy(By by) {
         findElement(15, by).click();
     }
 
+    private TouchAction touchAction(){
+        return new TouchAction(getDriver());
+    }
+
+    public void tab(By by) {
+        touchAction()
+                .tap(tapOptions().withElement(element(findElement(by))))
+                .perform();
+    }
+
     public void longPress(By by) {
-        new TouchAction(getDriver()).longPress(
-                longPressOptions().withElement(element(findElement(by)))
-        ).perform();
+        touchAction()
+                .longPress(longPressOptions().withElement(element(findElement(by))))
+                .perform();
     }
 
     public void swipe(By from, By to) {
-        new TouchAction(getDriver())
+        touchAction()
                 .longPress(longPressOptions()
                         .withElement(element(findElement(from)))
                         .withDuration(Duration.ofSeconds(2)))
@@ -61,7 +65,7 @@ public abstract class Phone extends Device {
     }
 
     public void dragAndDrop(WebElement source, WebElement destination) {
-        new TouchAction(getDriver())
+        touchAction()
                 .longPress(longPressOptions().withElement(element(source)))
                 .moveTo(element(destination))
                 .release()
