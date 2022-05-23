@@ -26,11 +26,6 @@ public abstract class Phone extends Device {
 
     public abstract DesiredCapabilities getCapabilities();
 
-    @Override
-    public byte[] takeScreenshot(String scrFilename) {
-        return new byte[0];
-    }
-
     public abstract void scrollUntilElement(By by);
 
     public abstract void hideKeyboard();
