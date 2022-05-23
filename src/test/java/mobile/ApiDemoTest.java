@@ -40,7 +40,7 @@ public class ApiDemoTest extends BaseTest {
                 .openDragAndDrop()
                 .dragElementThanDrop();
 
-        assertThat("Drag then drop operation went by mistake", dragAndDropPage.getStatusMsg(), is(equalTo("Dropped!-")));
+        assertThat("Drag then drop operation went by mistake", dragAndDropPage.getStatusMsg(), is(equalTo("Dropped!")));
     }
 
     @Test

@@ -43,9 +43,18 @@ Case4 - Basılı tutma testi:
 
 
 
-**Projede yer alan tüm testleri komut satırı üzerinden maven surefire plugin'i ile koşmak için POM.xml'in olduğu dizinde
+Projede yer alan tüm testleri komut satırı üzerinden maven surefire plugin'i ile koşmak için POM.xml'in olduğu dizinde
 `mvn clean verify` komutu verilir.
 
 Özel bir test suit oluşturmak için ise Pom.xml de profil hazırlanır ve içerisine istenilen case'ler eklenilip, 
 istenilmeyenler çıkartıldıkdan sonra aşağıdaki maven komutu ile ilgili suit içerisinde yer alan testler execute edilir.
-`mvn clean verify -PprofilName`**
+`mvn clean verify -PprofilName`
+
+Testler'den birinin fail olması durumunda 'src/main/java/base/BaseTest' içerisinde yer alan test rule implementasyon'u 
+olan TestWatcherItems içerisinde yer alan fail hook'u içerisinde ekran görüntüsü alınıp 'screenshots' dizini içerisine 
+kaydedilmektedir.
+
+Testleri koşan Surefire plugin'inin Allure property'si test sonuçlarını 'allure-results' içerisine log'lamaktadır. 
+Bu log file'lardan test raporu oluşturmak için ilgili dizinde allure `serve allure-results` komutu çalıştırılır. 
+Bu komutu çalıştırabilrmek için allure bilgisayarımızda kurulu olmalıdır.(`brew install allure`)
+
