@@ -18,19 +18,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ApiDemoTest extends BaseTest {
 
     @Test
-    public void shouldSeeSampleMenuPopupWhenPressAndHoldPeopleNames() {
-        Visitor visitor = VisitorPool.anonymous().openApp(DeviceType.ANDROID);
-        AndroidHomePage homePage = (AndroidHomePage) visitor.nowLookingAt();
-        CustomAdapterPage customAdapterPage = homePage
-                .openViews()
-                .openExpandableList()
-                .openCustomAdapterPage()
-                .longPressToPeopleNames();
-
-        assertThat("People names popup text displayed by mistake", customAdapterPage.getPopupText(), is(equalTo("Sample menu")));
-    }
-
-    @Test
     @FileParameters("src/main/resources/testdata/swipe-minute-hand-to-list.csv")
     public void shouldSwipeMinuteHandTo(String from, String to) {
         Visitor visitor = VisitorPool.anonymous().openApp(DeviceType.ANDROID);
@@ -72,5 +59,18 @@ public class ApiDemoTest extends BaseTest {
                 .openWiFiSettingsPopup();
 
         assertThat("WiFi settings text couldn't be written", preferenceDependenciesPage.getWrittenWiFiSettings(), is(equalTo(actualText)));
+    }
+
+    @Test
+    public void shouldSeeSampleMenuPopupWhenPressAndHoldPeopleNames() {
+        Visitor visitor = VisitorPool.anonymous().openApp(DeviceType.ANDROID);
+        AndroidHomePage homePage = (AndroidHomePage) visitor.nowLookingAt();
+        CustomAdapterPage customAdapterPage = homePage
+                .openViews()
+                .openExpandableList()
+                .openCustomAdapterPage()
+                .longPressToPeopleNames();
+
+        assertThat("People names popup text displayed by mistake", customAdapterPage.getPopupText(), is(equalTo("Sample menu")));
     }
 }

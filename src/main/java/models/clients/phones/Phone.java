@@ -74,7 +74,6 @@ public abstract class Phone extends Device {
     }
 
     public void type(By by, String text, boolean clear) {
-        scrollUntilElement(by);
         WebElement element = findElement(by);
         if (clear) {
             element.clear();
