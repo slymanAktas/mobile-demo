@@ -39,4 +39,8 @@ public class SeleniumDriver {
         waitForPresenceOf(timeout, by);
         return findElement(by, null);
     }
+
+    public List<WebElement> findElements(By by) {
+        return webDriver.findElements(by);
+    }
 }
