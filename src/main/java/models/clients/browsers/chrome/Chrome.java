@@ -22,6 +22,7 @@ public class Chrome extends Browser {
     public void initInGrid() {
         try {
             webDriver = new RemoteWebDriver(new URL(SELENIUM_GRID_HUB_URL), getOptions(true));
+            System.setProperty("webdriver.chrome.silentOutput", "true"); // İgnore ChromeDriver warnings
             webDriver.manage().window().setSize(new Dimension(1216, 1024));
             ((RemoteWebDriver) webDriver).setFileDetector(new LocalFileDetector());
         } catch (MalformedURLException mue) {
@@ -31,7 +32,7 @@ public class Chrome extends Browser {
 
     @Override
     public void initInLocal() {
-        ChromeDriverManager.getInstance().version("98.0.4758.102").setup();
+        ChromeDriverManager.getInstance().version("101.0.4951.41").setup();
         webDriver = new ChromeDriver(getOptions(false));
         webDriver.manage().window().maximize();
     }

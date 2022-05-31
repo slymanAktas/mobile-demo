@@ -33,14 +33,14 @@ public class ApiDemoTest extends BaseTest {
 
     @Test
     public void shouldDragElementThenDrop() {
-        Visitor visitor = VisitorPool.anonymous().openApp(DeviceType.ANDROID);
+        Visitor visitor = VisitorPool.anonymous().openApp(DeviceType.CHROME);
         AndroidHomePage homePage = (AndroidHomePage) visitor.nowLookingAt();
         DragAndDropPage dragAndDropPage = homePage
                 .openViews()
                 .openDragAndDrop()
                 .dragElementThanDrop();
 
-        assertThat("Drag then drop operation went by mistake", dragAndDropPage.getStatusMsg(), is(equalTo("Dropped!")));
+        assertThat("Drag then drop operation went by mistake", dragAndDropPage.getStatusMsg(), is(equalTo("Dropped!--")));
     }
 
     @Test
