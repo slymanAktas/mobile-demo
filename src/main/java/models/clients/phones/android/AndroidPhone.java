@@ -43,11 +43,11 @@ public class AndroidPhone extends Phone {
 
     @Override
     public DesiredCapabilities getCapabilities() {
-        DesiredCapabilities capability = new DesiredCapabilities();
-        capability.setCapability(MobileCapabilityType.APP, getAppDir().getAbsolutePath());
-        capability.setCapability(MobileCapabilityType.DEVICE_NAME, "TiramisuEmulator");
-        capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-        return capability;
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(MobileCapabilityType.APP, getAppDir().getAbsolutePath());
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "TiramisuEmulator");
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+        return capabilities;
     }
 
     @Override
